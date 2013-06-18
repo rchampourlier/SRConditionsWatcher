@@ -8,6 +8,7 @@
 
 #import "SRConditionsWatcherTests.h"
 #import "SRConditionsWatcher.h"
+#import <OCMock/OCMock.h>
 
 static NSString const * kFileName = @"SRConditionsWatcherState.plist";
 
