@@ -76,8 +76,8 @@ static NSString const * kFileName = @"SRConditionsWatcherState.plist";
 - (id)mockEnvironmentHelper
 {
   SREnvironmentHelper *original = [[SREnvironmentHelper alloc] init];
-  id mock = [OCMockObject mockForClass:[SREnvironmentHelper class]];
-  [[[mock stub] andReturn:original.documentDirectoryURL] documentDirectoryURL];
+  id mock = [OCMockObject partialMockForObject:original];
+  [[[mock stub] andForwardToRealObject] documentDirectoryURL];
   return mock;
 }
 
@@ -228,22 +228,76 @@ static NSString const * kFileName = @"SRConditionsWatcherState.plist";
 
 - (void)testEvaluateConditionVersionChangeShouldActivateIfVersionIsDifferentFromState
 {
+  __block NSUInteger blockRunCount = 0;
+  [_watcher addCondition: self.helperTestConditionName
+                    type: SRCWConditionTypeVersionChange
+                 options: nil
+                   block: ^{blockRunCount++;}];
   
+  id mockEnvironmentHelper = self.mockEnvironmentHelper;
+  _watcher.environmentHelper = mockEnvironmentHelper;
+  [[[mockEnvironmentHelper expect] andReturn:@"1.2.3"] currentVersion];
+  [self helperTestConditionEvaluate];
+  
+  [[[mockEnvironmentHelper expect] andReturn:@"1.2.4"] currentVersion];
+  [self helperTestConditionEvaluate];
+
+  GHAssertTrue(blockRunCount == 1, @"Version change condition should have activated on version change");
 }
 
 - (void)testEvaluateConditionVersionChangeShouldNotActivateIfVersionIsSameAsState
 {
+  __block NSUInteger blockRunCount = 0;
+  [_watcher addCondition: self.helperTestConditionName
+                    type: SRCWConditionTypeVersionChange
+                 options: nil
+                   block: ^{blockRunCount++;}];
   
+  id mockEnvironmentHelper = self.mockEnvironmentHelper;
+  _watcher.environmentHelper = mockEnvironmentHelper;
+  [[[mockEnvironmentHelper stub] andReturn:@"1.2.3"] currentVersion];
+  [self helperTestConditionEvaluate];
+  
+  [[[mockEnvironmentHelper expect] andReturn:@"1.2.4"] currentVersion];
+  [self helperTestConditionEvaluate];
+  GHAssertTrue(blockRunCount == 0, @"Version change condition should not activate if same as the saved one");
 }
 
 - (void)testEvaluateConditionWithLimitOnMaxActivationCountShouldNotActivateIfVerifiedButLimitReached
 {
+  __block NSUInteger blockRunCount = 0;
+  [_watcher addCondition: self.helperTestConditionName
+                    type: SRCWConditionTypeCountTriggered
+                 options: @{SRCWConditionOptionCountModulo: @(1),
+                            SRCWConditionOptionLimitingActivationCount: @(1)}
+                   block:^{
+                     blockRunCount++;
+                   }];
   
+  [self helperTestConditionTriggerAndEvaluate];
+  GHAssertTrue(blockRunCount == 1, @"Condition should have been activated the first time it's triggered");
+
+  for (int i = 0; i < 10; i++) {
+    [self helperTestConditionTriggerAndEvaluate];
+  }
+  GHAssertTrue(blockRunCount == 1, @"Condition should not be activated after it has been activated the limiting max number of times");
 }
 
-- (void)testEvaluateConditionWithLimitOnMaxActivationCountShouldActivateIfVerifiedAndLimitNotReached
+- (void)testEvaluateConditionWithLimitOnMaxActivationCountShouldActivateAsManyTimesAsPermittedByTheLimit
 {
-  
+  __block NSUInteger blockRunCount = 0;
+  [_watcher addCondition: self.helperTestConditionName
+                    type: SRCWConditionTypeCountTriggered
+                 options: @{SRCWConditionOptionCountModulo: @(1),
+                            SRCWConditionOptionLimitingActivationCount: @(3)}
+                   block:^{
+                     blockRunCount++;
+                   }];
+    
+  for (int i = 0; i < 10; i++) {
+    [self helperTestConditionTriggerAndEvaluate];
+  }
+  GHAssertTrue(blockRunCount == 3, @"Condition should have been activated 3 times, the number enabled by the limit even if always verified");
 }
 
 

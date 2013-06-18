@@ -130,10 +130,12 @@ static NSString const * kConditionDictionaryType                = @"type";
     case SRCWConditionTypeVersionChange:
       result = [self evaluateConditionOfTypeVersionChangeWithState:conditionState
                                                            options:conditionOptions];
+      break;
       
     case SRCWConditionTypeCountTriggered: {
       result = [self evaluateConditionOfTypeCountTriggeredWithState:conditionState
                                                             options:conditionOptions];
+      break;
     }
   }
   
