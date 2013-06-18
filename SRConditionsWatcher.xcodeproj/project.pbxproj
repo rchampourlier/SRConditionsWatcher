@@ -418,6 +418,7 @@
 					"\"$(SRCROOT)/SRConditionsWatcherTests\"",
 					"\"$(SRCROOT)/SRConditionsWatcherTests/Libraries\"",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -439,6 +440,7 @@
 					"\"$(SRCROOT)/SRConditionsWatcherTests\"",
 					"\"$(SRCROOT)/SRConditionsWatcherTests/Libraries\"",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
 			};
