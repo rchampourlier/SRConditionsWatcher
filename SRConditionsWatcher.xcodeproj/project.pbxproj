@@ -10,7 +10,6 @@
 		7AE122BE177067D2003B48BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE122BD177067D2003B48BD /* Foundation.framework */; };
 		7AE122C3177067D2003B48BD /* SRConditionsWatcher.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7AE122C2177067D2003B48BD /* SRConditionsWatcher.h */; };
 		7AE122C5177067D2003B48BD /* SRConditionsWatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE122C4177067D2003B48BD /* SRConditionsWatcher.m */; };
-		7AE122FC1770C725003B48BD /* SREnvironmentHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE122FB1770C725003B48BD /* SREnvironmentHelper.m */; };
 		7AE123021770D035003B48BD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE122CE177067D3003B48BD /* UIKit.framework */; };
 		7AE123031770D035003B48BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE122BD177067D2003B48BD /* Foundation.framework */; };
 		7AE123051770D035003B48BD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE123041770D035003B48BD /* CoreGraphics.framework */; };
@@ -24,6 +23,7 @@
 		7AE123291770D1A3003B48BD /* SRConditionsWatcherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE123281770D1A3003B48BD /* SRConditionsWatcherTests.m */; };
 		7AE1232A1770D2DE003B48BD /* SRConditionsWatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE122C4177067D2003B48BD /* SRConditionsWatcher.m */; };
 		7AE1232B1770D2DE003B48BD /* SREnvironmentHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE122FB1770C725003B48BD /* SREnvironmentHelper.m */; };
+		7AE1232D1770E164003B48BD /* SRConditionsWatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AE122C2177067D2003B48BD /* SRConditionsWatcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -192,6 +192,17 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		7AE1232C1770E15B003B48BD /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7AE1232D1770E164003B48BD /* SRConditionsWatcher.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
 		7AE122B9177067D2003B48BD /* SRConditionsWatcher */ = {
 			isa = PBXNativeTarget;
@@ -200,6 +211,7 @@
 				7AE122B6177067D2003B48BD /* Sources */,
 				7AE122B7177067D2003B48BD /* Frameworks */,
 				7AE122B8177067D2003B48BD /* CopyFiles */,
+				7AE1232C1770E15B003B48BD /* Headers */,
 				7AE122EF1770C348003B48BD /* ShellScript */,
 			);
 			buildRules = (
@@ -291,7 +303,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7AE122C5177067D2003B48BD /* SRConditionsWatcher.m in Sources */,
-				7AE122FC1770C725003B48BD /* SREnvironmentHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,6 +487,7 @@
 				7AE1231A1770D035003B48BD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
