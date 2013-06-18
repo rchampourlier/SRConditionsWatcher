@@ -1,0 +1,418 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7AE122BE177067D2003B48BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE122BD177067D2003B48BD /* Foundation.framework */; };
+		7AE122C3177067D2003B48BD /* SRConditionsWatcher.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7AE122C2177067D2003B48BD /* SRConditionsWatcher.h */; };
+		7AE122C5177067D2003B48BD /* SRConditionsWatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE122C4177067D2003B48BD /* SRConditionsWatcher.m */; };
+		7AE122CD177067D3003B48BD /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE122CC177067D3003B48BD /* SenTestingKit.framework */; };
+		7AE122CF177067D3003B48BD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE122CE177067D3003B48BD /* UIKit.framework */; };
+		7AE122D0177067D3003B48BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE122BD177067D2003B48BD /* Foundation.framework */; };
+		7AE122D3177067D3003B48BD /* libSRConditionsWatcher.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE122BA177067D2003B48BD /* libSRConditionsWatcher.a */; };
+		7AE122D9177067D3003B48BD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7AE122D7177067D3003B48BD /* InfoPlist.strings */; };
+		7AE122DC177067D3003B48BD /* SRConditionsWatcherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE122DB177067D3003B48BD /* SRConditionsWatcherTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7AE122D1177067D3003B48BD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7AE122B2177067D2003B48BD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7AE122B9177067D2003B48BD;
+			remoteInfo = SRConditionsWatcher;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7AE122B8177067D2003B48BD /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/${PRODUCT_NAME}";
+			dstSubfolderSpec = 16;
+			files = (
+				7AE122C3177067D2003B48BD /* SRConditionsWatcher.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		7AE122BA177067D2003B48BD /* libSRConditionsWatcher.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSRConditionsWatcher.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		7AE122BD177067D2003B48BD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		7AE122C1177067D2003B48BD /* SRConditionsWatcher-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SRConditionsWatcher-Prefix.pch"; sourceTree = "<group>"; };
+		7AE122C2177067D2003B48BD /* SRConditionsWatcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SRConditionsWatcher.h; sourceTree = "<group>"; };
+		7AE122C4177067D2003B48BD /* SRConditionsWatcher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SRConditionsWatcher.m; sourceTree = "<group>"; };
+		7AE122CB177067D3003B48BD /* SRConditionsWatcherTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SRConditionsWatcherTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7AE122CC177067D3003B48BD /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		7AE122CE177067D3003B48BD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		7AE122D6177067D3003B48BD /* SRConditionsWatcherTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SRConditionsWatcherTests-Info.plist"; sourceTree = "<group>"; };
+		7AE122D8177067D3003B48BD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7AE122DA177067D3003B48BD /* SRConditionsWatcherTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SRConditionsWatcherTests.h; sourceTree = "<group>"; };
+		7AE122DB177067D3003B48BD /* SRConditionsWatcherTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SRConditionsWatcherTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7AE122B7177067D2003B48BD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7AE122BE177067D2003B48BD /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7AE122C7177067D3003B48BD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7AE122CD177067D3003B48BD /* SenTestingKit.framework in Frameworks */,
+				7AE122CF177067D3003B48BD /* UIKit.framework in Frameworks */,
+				7AE122D0177067D3003B48BD /* Foundation.framework in Frameworks */,
+				7AE122D3177067D3003B48BD /* libSRConditionsWatcher.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7AE122B1177067D2003B48BD = {
+			isa = PBXGroup;
+			children = (
+				7AE122BF177067D2003B48BD /* SRConditionsWatcher */,
+				7AE122D4177067D3003B48BD /* SRConditionsWatcherTests */,
+				7AE122BC177067D2003B48BD /* Frameworks */,
+				7AE122BB177067D2003B48BD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7AE122BB177067D2003B48BD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7AE122BA177067D2003B48BD /* libSRConditionsWatcher.a */,
+				7AE122CB177067D3003B48BD /* SRConditionsWatcherTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7AE122BC177067D2003B48BD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7AE122BD177067D2003B48BD /* Foundation.framework */,
+				7AE122CC177067D3003B48BD /* SenTestingKit.framework */,
+				7AE122CE177067D3003B48BD /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7AE122BF177067D2003B48BD /* SRConditionsWatcher */ = {
+			isa = PBXGroup;
+			children = (
+				7AE122C2177067D2003B48BD /* SRConditionsWatcher.h */,
+				7AE122C4177067D2003B48BD /* SRConditionsWatcher.m */,
+				7AE122C0177067D2003B48BD /* Supporting Files */,
+			);
+			path = SRConditionsWatcher;
+			sourceTree = "<group>";
+		};
+		7AE122C0177067D2003B48BD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7AE122C1177067D2003B48BD /* SRConditionsWatcher-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7AE122D4177067D3003B48BD /* SRConditionsWatcherTests */ = {
+			isa = PBXGroup;
+			children = (
+				7AE122DA177067D3003B48BD /* SRConditionsWatcherTests.h */,
+				7AE122DB177067D3003B48BD /* SRConditionsWatcherTests.m */,
+				7AE122D5177067D3003B48BD /* Supporting Files */,
+			);
+			path = SRConditionsWatcherTests;
+			sourceTree = "<group>";
+		};
+		7AE122D5177067D3003B48BD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7AE122D6177067D3003B48BD /* SRConditionsWatcherTests-Info.plist */,
+				7AE122D7177067D3003B48BD /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7AE122B9177067D2003B48BD /* SRConditionsWatcher */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7AE122DF177067D3003B48BD /* Build configuration list for PBXNativeTarget "SRConditionsWatcher" */;
+			buildPhases = (
+				7AE122B6177067D2003B48BD /* Sources */,
+				7AE122B7177067D2003B48BD /* Frameworks */,
+				7AE122B8177067D2003B48BD /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SRConditionsWatcher;
+			productName = SRConditionsWatcher;
+			productReference = 7AE122BA177067D2003B48BD /* libSRConditionsWatcher.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		7AE122CA177067D3003B48BD /* SRConditionsWatcherTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7AE122E2177067D3003B48BD /* Build configuration list for PBXNativeTarget "SRConditionsWatcherTests" */;
+			buildPhases = (
+				7AE122C6177067D3003B48BD /* Sources */,
+				7AE122C7177067D3003B48BD /* Frameworks */,
+				7AE122C8177067D3003B48BD /* Resources */,
+				7AE122C9177067D3003B48BD /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7AE122D2177067D3003B48BD /* PBXTargetDependency */,
+			);
+			name = SRConditionsWatcherTests;
+			productName = SRConditionsWatcherTests;
+			productReference = 7AE122CB177067D3003B48BD /* SRConditionsWatcherTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7AE122B2177067D2003B48BD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = softRli;
+			};
+			buildConfigurationList = 7AE122B5177067D2003B48BD /* Build configuration list for PBXProject "SRConditionsWatcher" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7AE122B1177067D2003B48BD;
+			productRefGroup = 7AE122BB177067D2003B48BD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7AE122B9177067D2003B48BD /* SRConditionsWatcher */,
+				7AE122CA177067D3003B48BD /* SRConditionsWatcherTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7AE122C8177067D3003B48BD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7AE122D9177067D3003B48BD /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7AE122C9177067D3003B48BD /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7AE122B6177067D2003B48BD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7AE122C5177067D2003B48BD /* SRConditionsWatcher.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7AE122C6177067D3003B48BD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7AE122DC177067D3003B48BD /* SRConditionsWatcherTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7AE122D2177067D3003B48BD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7AE122B9177067D2003B48BD /* SRConditionsWatcher */;
+			targetProxy = 7AE122D1177067D3003B48BD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		7AE122D7177067D3003B48BD /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7AE122D8177067D3003B48BD /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7AE122DD177067D3003B48BD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		7AE122DE177067D3003B48BD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7AE122E0177067D3003B48BD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/SRConditionsWatcher.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SRConditionsWatcher/SRConditionsWatcher-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		7AE122E1177067D3003B48BD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/SRConditionsWatcher.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SRConditionsWatcher/SRConditionsWatcher-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		7AE122E3177067D3003B48BD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SRConditionsWatcher/SRConditionsWatcher-Prefix.pch";
+				INFOPLIST_FILE = "SRConditionsWatcherTests/SRConditionsWatcherTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		7AE122E4177067D3003B48BD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SRConditionsWatcher/SRConditionsWatcher-Prefix.pch";
+				INFOPLIST_FILE = "SRConditionsWatcherTests/SRConditionsWatcherTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7AE122B5177067D2003B48BD /* Build configuration list for PBXProject "SRConditionsWatcher" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7AE122DD177067D3003B48BD /* Debug */,
+				7AE122DE177067D3003B48BD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7AE122DF177067D3003B48BD /* Build configuration list for PBXNativeTarget "SRConditionsWatcher" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7AE122E0177067D3003B48BD /* Debug */,
+				7AE122E1177067D3003B48BD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		7AE122E2177067D3003B48BD /* Build configuration list for PBXNativeTarget "SRConditionsWatcherTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7AE122E3177067D3003B48BD /* Debug */,
+				7AE122E4177067D3003B48BD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7AE122B2177067D2003B48BD /* Project object */;
+}
