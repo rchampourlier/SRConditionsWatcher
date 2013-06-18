@@ -10,24 +10,21 @@
 		7AE122BE177067D2003B48BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE122BD177067D2003B48BD /* Foundation.framework */; };
 		7AE122C3177067D2003B48BD /* SRConditionsWatcher.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7AE122C2177067D2003B48BD /* SRConditionsWatcher.h */; };
 		7AE122C5177067D2003B48BD /* SRConditionsWatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE122C4177067D2003B48BD /* SRConditionsWatcher.m */; };
-		7AE122CD177067D3003B48BD /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE122CC177067D3003B48BD /* SenTestingKit.framework */; };
-		7AE122CF177067D3003B48BD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE122CE177067D3003B48BD /* UIKit.framework */; };
-		7AE122D0177067D3003B48BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE122BD177067D2003B48BD /* Foundation.framework */; };
-		7AE122D3177067D3003B48BD /* libSRConditionsWatcher.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE122BA177067D2003B48BD /* libSRConditionsWatcher.a */; };
-		7AE122D9177067D3003B48BD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7AE122D7177067D3003B48BD /* InfoPlist.strings */; };
-		7AE122DC177067D3003B48BD /* SRConditionsWatcherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE122DB177067D3003B48BD /* SRConditionsWatcherTests.m */; };
-		7AE122F91770C581003B48BD /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE122F11770C581003B48BD /* libOCMock.a */; };
+		7AE122FC1770C725003B48BD /* SREnvironmentHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE122FB1770C725003B48BD /* SREnvironmentHelper.m */; };
+		7AE123021770D035003B48BD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE122CE177067D3003B48BD /* UIKit.framework */; };
+		7AE123031770D035003B48BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE122BD177067D2003B48BD /* Foundation.framework */; };
+		7AE123051770D035003B48BD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE123041770D035003B48BD /* CoreGraphics.framework */; };
+		7AE1230B1770D035003B48BD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7AE123091770D035003B48BD /* InfoPlist.strings */; };
+		7AE1230D1770D035003B48BD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE1230C1770D035003B48BD /* main.m */; };
+		7AE123131770D035003B48BD /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AE123121770D035003B48BD /* Default.png */; };
+		7AE123151770D035003B48BD /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AE123141770D035003B48BD /* Default@2x.png */; };
+		7AE123171770D035003B48BD /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AE123161770D035003B48BD /* Default-568h@2x.png */; };
+		7AE1231C1770D053003B48BD /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE1231B1770D053003B48BD /* GHUnitIOS.framework */; };
+		7AE123261770D16A003B48BD /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE1231E1770D16A003B48BD /* libOCMock.a */; };
+		7AE123291770D1A3003B48BD /* SRConditionsWatcherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE123281770D1A3003B48BD /* SRConditionsWatcherTests.m */; };
+		7AE1232A1770D2DE003B48BD /* SRConditionsWatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE122C4177067D2003B48BD /* SRConditionsWatcher.m */; };
+		7AE1232B1770D2DE003B48BD /* SREnvironmentHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE122FB1770C725003B48BD /* SREnvironmentHelper.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		7AE122D1177067D3003B48BD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7AE122B2177067D2003B48BD /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7AE122B9177067D2003B48BD;
-			remoteInfo = SRConditionsWatcher;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		7AE122B8177067D2003B48BD /* CopyFiles */ = {
@@ -48,20 +45,28 @@
 		7AE122C1177067D2003B48BD /* SRConditionsWatcher-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SRConditionsWatcher-Prefix.pch"; sourceTree = "<group>"; };
 		7AE122C2177067D2003B48BD /* SRConditionsWatcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SRConditionsWatcher.h; sourceTree = "<group>"; };
 		7AE122C4177067D2003B48BD /* SRConditionsWatcher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SRConditionsWatcher.m; sourceTree = "<group>"; };
-		7AE122CB177067D3003B48BD /* SRConditionsWatcherTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SRConditionsWatcherTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AE122CC177067D3003B48BD /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		7AE122CE177067D3003B48BD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		7AE122D6177067D3003B48BD /* SRConditionsWatcherTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SRConditionsWatcherTests-Info.plist"; sourceTree = "<group>"; };
-		7AE122D8177067D3003B48BD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		7AE122DA177067D3003B48BD /* SRConditionsWatcherTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SRConditionsWatcherTests.h; sourceTree = "<group>"; };
-		7AE122DB177067D3003B48BD /* SRConditionsWatcherTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SRConditionsWatcherTests.m; sourceTree = "<group>"; };
-		7AE122F11770C581003B48BD /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libOCMock.a; sourceTree = "<group>"; };
-		7AE122F31770C581003B48BD /* NSNotificationCenter+OCMAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+OCMAdditions.h"; sourceTree = "<group>"; };
-		7AE122F41770C581003B48BD /* OCMArg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMArg.h; sourceTree = "<group>"; };
-		7AE122F51770C581003B48BD /* OCMConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMConstraint.h; sourceTree = "<group>"; };
-		7AE122F61770C581003B48BD /* OCMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMock.h; sourceTree = "<group>"; };
-		7AE122F71770C581003B48BD /* OCMockObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMockObject.h; sourceTree = "<group>"; };
-		7AE122F81770C581003B48BD /* OCMockRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMockRecorder.h; sourceTree = "<group>"; };
+		7AE122FA1770C725003B48BD /* SREnvironmentHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SREnvironmentHelper.h; sourceTree = "<group>"; };
+		7AE122FB1770C725003B48BD /* SREnvironmentHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SREnvironmentHelper.m; sourceTree = "<group>"; };
+		7AE123011770D035003B48BD /* SRConditionsWatcherGHUnitTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SRConditionsWatcherGHUnitTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7AE123041770D035003B48BD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		7AE123081770D035003B48BD /* SRConditionsWatcherGHUnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SRConditionsWatcherGHUnitTests-Info.plist"; sourceTree = "<group>"; };
+		7AE1230A1770D035003B48BD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7AE1230C1770D035003B48BD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7AE1230E1770D035003B48BD /* SRConditionsWatcherGHUnitTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SRConditionsWatcherGHUnitTests-Prefix.pch"; sourceTree = "<group>"; };
+		7AE123121770D035003B48BD /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		7AE123141770D035003B48BD /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		7AE123161770D035003B48BD /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		7AE1231B1770D053003B48BD /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GHUnitIOS.framework; sourceTree = "<group>"; };
+		7AE1231E1770D16A003B48BD /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libOCMock.a; sourceTree = "<group>"; };
+		7AE123201770D16A003B48BD /* NSNotificationCenter+OCMAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+OCMAdditions.h"; sourceTree = "<group>"; };
+		7AE123211770D16A003B48BD /* OCMArg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMArg.h; sourceTree = "<group>"; };
+		7AE123221770D16A003B48BD /* OCMConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMConstraint.h; sourceTree = "<group>"; };
+		7AE123231770D16A003B48BD /* OCMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMock.h; sourceTree = "<group>"; };
+		7AE123241770D16A003B48BD /* OCMockObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMockObject.h; sourceTree = "<group>"; };
+		7AE123251770D16A003B48BD /* OCMockRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMockRecorder.h; sourceTree = "<group>"; };
+		7AE123281770D1A3003B48BD /* SRConditionsWatcherTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRConditionsWatcherTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,15 +78,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7AE122C7177067D3003B48BD /* Frameworks */ = {
+		7AE122FE1770D035003B48BD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7AE122CD177067D3003B48BD /* SenTestingKit.framework in Frameworks */,
-				7AE122CF177067D3003B48BD /* UIKit.framework in Frameworks */,
-				7AE122D0177067D3003B48BD /* Foundation.framework in Frameworks */,
-				7AE122D3177067D3003B48BD /* libSRConditionsWatcher.a in Frameworks */,
-				7AE122F91770C581003B48BD /* libOCMock.a in Frameworks */,
+				7AE123021770D035003B48BD /* UIKit.framework in Frameworks */,
+				7AE123031770D035003B48BD /* Foundation.framework in Frameworks */,
+				7AE123051770D035003B48BD /* CoreGraphics.framework in Frameworks */,
+				7AE1231C1770D053003B48BD /* GHUnitIOS.framework in Frameworks */,
+				7AE123261770D16A003B48BD /* libOCMock.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,7 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				7AE122BF177067D2003B48BD /* SRConditionsWatcher */,
-				7AE122D4177067D3003B48BD /* SRConditionsWatcherTests */,
+				7AE123061770D035003B48BD /* SRConditionsWatcherGHUnitTests */,
 				7AE122BC177067D2003B48BD /* Frameworks */,
 				7AE122BB177067D2003B48BD /* Products */,
 			);
@@ -102,7 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				7AE122BA177067D2003B48BD /* libSRConditionsWatcher.a */,
-				7AE122CB177067D3003B48BD /* SRConditionsWatcherTests.octest */,
+				7AE123011770D035003B48BD /* SRConditionsWatcherGHUnitTests.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -113,6 +118,8 @@
 				7AE122BD177067D2003B48BD /* Foundation.framework */,
 				7AE122CC177067D3003B48BD /* SenTestingKit.framework */,
 				7AE122CE177067D3003B48BD /* UIKit.framework */,
+				7AE123041770D035003B48BD /* CoreGraphics.framework */,
+				7AE1231B1770D053003B48BD /* GHUnitIOS.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -122,6 +129,8 @@
 			children = (
 				7AE122C2177067D2003B48BD /* SRConditionsWatcher.h */,
 				7AE122C4177067D2003B48BD /* SRConditionsWatcher.m */,
+				7AE122FA1770C725003B48BD /* SREnvironmentHelper.h */,
+				7AE122FB1770C725003B48BD /* SREnvironmentHelper.m */,
 				7AE122C0177067D2003B48BD /* Supporting Files */,
 			);
 			path = SRConditionsWatcher;
@@ -135,44 +144,48 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		7AE122D4177067D3003B48BD /* SRConditionsWatcherTests */ = {
+		7AE123061770D035003B48BD /* SRConditionsWatcherGHUnitTests */ = {
 			isa = PBXGroup;
 			children = (
-				7AE122DA177067D3003B48BD /* SRConditionsWatcherTests.h */,
-				7AE122DB177067D3003B48BD /* SRConditionsWatcherTests.m */,
-				7AE122F01770C581003B48BD /* Libraries */,
-				7AE122D5177067D3003B48BD /* Supporting Files */,
+				7AE123281770D1A3003B48BD /* SRConditionsWatcherTests.m */,
+				7AE1231D1770D16A003B48BD /* Libraries */,
+				7AE123071770D035003B48BD /* Supporting Files */,
 			);
-			path = SRConditionsWatcherTests;
+			path = SRConditionsWatcherGHUnitTests;
 			sourceTree = "<group>";
 		};
-		7AE122D5177067D3003B48BD /* Supporting Files */ = {
+		7AE123071770D035003B48BD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				7AE122D6177067D3003B48BD /* SRConditionsWatcherTests-Info.plist */,
-				7AE122D7177067D3003B48BD /* InfoPlist.strings */,
+				7AE123081770D035003B48BD /* SRConditionsWatcherGHUnitTests-Info.plist */,
+				7AE123091770D035003B48BD /* InfoPlist.strings */,
+				7AE1230C1770D035003B48BD /* main.m */,
+				7AE1230E1770D035003B48BD /* SRConditionsWatcherGHUnitTests-Prefix.pch */,
+				7AE123121770D035003B48BD /* Default.png */,
+				7AE123141770D035003B48BD /* Default@2x.png */,
+				7AE123161770D035003B48BD /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		7AE122F01770C581003B48BD /* Libraries */ = {
+		7AE1231D1770D16A003B48BD /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				7AE122F11770C581003B48BD /* libOCMock.a */,
-				7AE122F21770C581003B48BD /* OCMock */,
+				7AE1231E1770D16A003B48BD /* libOCMock.a */,
+				7AE1231F1770D16A003B48BD /* OCMock */,
 			);
 			path = Libraries;
 			sourceTree = "<group>";
 		};
-		7AE122F21770C581003B48BD /* OCMock */ = {
+		7AE1231F1770D16A003B48BD /* OCMock */ = {
 			isa = PBXGroup;
 			children = (
-				7AE122F31770C581003B48BD /* NSNotificationCenter+OCMAdditions.h */,
-				7AE122F41770C581003B48BD /* OCMArg.h */,
-				7AE122F51770C581003B48BD /* OCMConstraint.h */,
-				7AE122F61770C581003B48BD /* OCMock.h */,
-				7AE122F71770C581003B48BD /* OCMockObject.h */,
-				7AE122F81770C581003B48BD /* OCMockRecorder.h */,
+				7AE123201770D16A003B48BD /* NSNotificationCenter+OCMAdditions.h */,
+				7AE123211770D16A003B48BD /* OCMArg.h */,
+				7AE123221770D16A003B48BD /* OCMConstraint.h */,
+				7AE123231770D16A003B48BD /* OCMock.h */,
+				7AE123241770D16A003B48BD /* OCMockObject.h */,
+				7AE123251770D16A003B48BD /* OCMockRecorder.h */,
 			);
 			path = OCMock;
 			sourceTree = "<group>";
@@ -198,24 +211,22 @@
 			productReference = 7AE122BA177067D2003B48BD /* libSRConditionsWatcher.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		7AE122CA177067D3003B48BD /* SRConditionsWatcherTests */ = {
+		7AE123001770D035003B48BD /* SRConditionsWatcherGHUnitTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7AE122E2177067D3003B48BD /* Build configuration list for PBXNativeTarget "SRConditionsWatcherTests" */;
+			buildConfigurationList = 7AE123181770D035003B48BD /* Build configuration list for PBXNativeTarget "SRConditionsWatcherGHUnitTests" */;
 			buildPhases = (
-				7AE122C6177067D3003B48BD /* Sources */,
-				7AE122C7177067D3003B48BD /* Frameworks */,
-				7AE122C8177067D3003B48BD /* Resources */,
-				7AE122C9177067D3003B48BD /* ShellScript */,
+				7AE122FD1770D035003B48BD /* Sources */,
+				7AE122FE1770D035003B48BD /* Frameworks */,
+				7AE122FF1770D035003B48BD /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				7AE122D2177067D3003B48BD /* PBXTargetDependency */,
 			);
-			name = SRConditionsWatcherTests;
-			productName = SRConditionsWatcherTests;
-			productReference = 7AE122CB177067D3003B48BD /* SRConditionsWatcherTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			name = SRConditionsWatcherGHUnitTests;
+			productName = SRConditionsWatcherGHUnitTests;
+			productReference = 7AE123011770D035003B48BD /* SRConditionsWatcherGHUnitTests.app */;
+			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
@@ -239,36 +250,26 @@
 			projectRoot = "";
 			targets = (
 				7AE122B9177067D2003B48BD /* SRConditionsWatcher */,
-				7AE122CA177067D3003B48BD /* SRConditionsWatcherTests */,
+				7AE123001770D035003B48BD /* SRConditionsWatcherGHUnitTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		7AE122C8177067D3003B48BD /* Resources */ = {
+		7AE122FF1770D035003B48BD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7AE122D9177067D3003B48BD /* InfoPlist.strings in Resources */,
+				7AE1230B1770D035003B48BD /* InfoPlist.strings in Resources */,
+				7AE123131770D035003B48BD /* Default.png in Resources */,
+				7AE123151770D035003B48BD /* Default@2x.png in Resources */,
+				7AE123171770D035003B48BD /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		7AE122C9177067D3003B48BD /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
-		};
 		7AE122EF1770C348003B48BD /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -290,32 +291,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				7AE122C5177067D2003B48BD /* SRConditionsWatcher.m in Sources */,
+				7AE122FC1770C725003B48BD /* SREnvironmentHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7AE122C6177067D3003B48BD /* Sources */ = {
+		7AE122FD1770D035003B48BD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7AE122DC177067D3003B48BD /* SRConditionsWatcherTests.m in Sources */,
+				7AE1230D1770D035003B48BD /* main.m in Sources */,
+				7AE123291770D1A3003B48BD /* SRConditionsWatcherTests.m in Sources */,
+				7AE1232A1770D2DE003B48BD /* SRConditionsWatcher.m in Sources */,
+				7AE1232B1770D2DE003B48BD /* SREnvironmentHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		7AE122D2177067D3003B48BD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 7AE122B9177067D2003B48BD /* SRConditionsWatcher */;
-			targetProxy = 7AE122D1177067D3003B48BD /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin PBXVariantGroup section */
-		7AE122D7177067D3003B48BD /* InfoPlist.strings */ = {
+		7AE123091770D035003B48BD /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				7AE122D8177067D3003B48BD /* en */,
+				7AE1230A1770D035003B48BD /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -402,47 +399,52 @@
 			};
 			name = Release;
 		};
-		7AE122E3177067D3003B48BD /* Debug */ = {
+		7AE123191770D035003B48BD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(inherited)",
+					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
+					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SRConditionsWatcher/SRConditionsWatcher-Prefix.pch";
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/SRConditionsWatcherTests/Libraries\"";
-				INFOPLIST_FILE = "SRConditionsWatcherTests/SRConditionsWatcherTests-Info.plist";
+				GCC_PREFIX_HEADER = "SRConditionsWatcherGHUnitTests/SRConditionsWatcherGHUnitTests-Prefix.pch";
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/SRConditionsWatcherGHUnitTests/Libraries\"";
+				INFOPLIST_FILE = "SRConditionsWatcherGHUnitTests/SRConditionsWatcherGHUnitTests-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/SRConditionsWatcherTests\"",
-					"\"$(SRCROOT)/SRConditionsWatcherTests/Libraries\"",
+					"\"$(SRCROOT)/SRConditionsWatcherGHUnitTests/Libraries\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = octest;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
-		7AE122E4177067D3003B48BD /* Release */ = {
+		7AE1231A1770D035003B48BD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(inherited)",
+					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
+					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SRConditionsWatcher/SRConditionsWatcher-Prefix.pch";
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/SRConditionsWatcherTests/Libraries\"";
-				INFOPLIST_FILE = "SRConditionsWatcherTests/SRConditionsWatcherTests-Info.plist";
+				GCC_PREFIX_HEADER = "SRConditionsWatcherGHUnitTests/SRConditionsWatcherGHUnitTests-Prefix.pch";
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/SRConditionsWatcherGHUnitTests/Libraries\"";
+				INFOPLIST_FILE = "SRConditionsWatcherGHUnitTests/SRConditionsWatcherGHUnitTests-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/SRConditionsWatcherTests\"",
-					"\"$(SRCROOT)/SRConditionsWatcherTests/Libraries\"",
+					"\"$(SRCROOT)/SRConditionsWatcherGHUnitTests/Libraries\"",
 				);
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = octest;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
 		};
@@ -467,14 +469,13 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7AE122E2177067D3003B48BD /* Build configuration list for PBXNativeTarget "SRConditionsWatcherTests" */ = {
+		7AE123181770D035003B48BD /* Build configuration list for PBXNativeTarget "SRConditionsWatcherGHUnitTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7AE122E3177067D3003B48BD /* Debug */,
-				7AE122E4177067D3003B48BD /* Release */,
+				7AE123191770D035003B48BD /* Debug */,
+				7AE1231A1770D035003B48BD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

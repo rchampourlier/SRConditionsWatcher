@@ -109,7 +109,13 @@ extern NSString const * SRCWConditionOptionCountExact;
 extern NSString const * SRCWConditionOptionCountModulo;
 extern NSString const * SRCWConditionOptionLimitingActivationCount;
 
+
+@class SREnvironmentHelper;
+
 @interface SRConditionsWatcher : NSObject
+
+@property (retain) SREnvironmentHelper *environmentHelper;
+
 
 // Adds the condition with the given name, type, options, and evaluation
 // block.

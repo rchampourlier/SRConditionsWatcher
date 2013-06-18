@@ -8,6 +8,10 @@
 
 #import "SRConditionsWatcher.h"
 
+// Libraries
+#import "SREnvironmentHelper.h"
+
+
 NSString const * SRCWConditionOptionCountExact                  = @"countExact";
 NSString const * SRCWConditionOptionCountModulo                 = @"countModulo";
 NSString const * SRCWConditionOptionLimitingActivationCount     = @"maxActivationCount";
@@ -52,14 +56,11 @@ static NSString const * kConditionDictionaryType                = @"type";
 - (BOOL)writeState;
 - (NSURL *)fileURL;
 
-#pragma mark - Helpers
-- (NSString *)currentVersion;
-- (NSURL *)documentDirectoryURL;
-
 @end
 
 
 @implementation SRConditionsWatcher
+@synthesize environmentHelper;
 
 
 #pragma mark - Life cycle
@@ -68,6 +69,7 @@ static NSString const * kConditionDictionaryType                = @"type";
 {
   self = [super init];
   if (self) {
+    self.environmentHelper = [[SREnvironmentHelper alloc] init];
     _conditions = [NSMutableDictionary dictionary];
     [self readState];
   }
@@ -187,7 +189,7 @@ static NSString const * kConditionDictionaryType                = @"type";
   else
   {
     NSString *savedVersion = [conditionState objectForKey:kStateDictionaryVersion];
-    NSString *currentVersion = [self currentVersion];
+    NSString *currentVersion = [self.environmentHelper currentVersion];
     [conditionState setObject:currentVersion forKey:kStateDictionaryVersion];
     
     if (savedVersion == nil || [savedVersion isEqualToString:currentVersion]) {
@@ -289,24 +291,8 @@ static NSString const * kConditionDictionaryType                = @"type";
 
 - (NSURL *)fileURL
 {
-  return [self.documentDirectoryURL URLByAppendingPathComponent:[kFileName copy]];
+  return [self.environmentHelper.documentDirectoryURL URLByAppendingPathComponent:[kFileName copy]];
 }
-
-
-#pragma mark - Helpers
-
-- (NSString *)currentVersion
-{
-  return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
-}
-
-- (NSURL *)documentDirectoryURL
-{
-  NSArray *URLs = [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask];
-  NSURL *documentDirectoryURL = URLs.count > 0 ? URLs[0] : nil;
-  return documentDirectoryURL;
-}
-
 
 @end
 
