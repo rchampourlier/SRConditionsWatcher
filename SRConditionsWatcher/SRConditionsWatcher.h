@@ -101,8 +101,11 @@
 //
 
 typedef enum {
-  SRCWConditionTypeVersionChange    = 1 << 0, // condition is triggered on version change
-  SRCWConditionTypeCountTriggered   = 1 << 1, // condition is triggered on manual trigger count
+  SRCWConditionTypeVersionChange      = 1 << 0, // condition is triggered on version change
+  SRCWConditionTypeCountTriggered     = 1 << 1, // condition is triggered on manual trigger count
+  SRCWConditionTypeCountLaunch        = 1 << 2,
+  SRCWConditionTypeCountReactivation  = 1 << 3,
+  SRCWConditionTypeCountOpen          = 1 << 4
 } SRCWConditionType;
 
 extern NSString const * SRCWConditionOptionCountExact;
@@ -140,5 +143,14 @@ extern NSString const * SRCWConditionOptionLimitingActivationCount;
 // @returns YES if the condition could be triggered and the state was successfully
 //          updated and saved.
 - (BOOL)triggerCondition:(NSString *)conditionName;
+
+- (BOOL)triggerLaunch;
+- (BOOL)triggerReactivation;
+
+#pragma mark - Limit conditions
+
+- (BOOL)limitCondition:(NSString *)conditionName;
+- (BOOL)unlimitCondition:(NSString *)conditionName;
+
 
 @end

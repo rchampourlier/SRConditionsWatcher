@@ -45,6 +45,27 @@ static NSString const * kFileName = @"SRConditionsWatcherState.plist";
                  options:nil block:^{}];
 }
 
+- (void)helperTestConditionCountLaunchAdd
+{
+  [_watcher addCondition:self.helperTestConditionName
+                    type:SRCWConditionTypeCountLaunch
+                 options:nil block:^{}];
+}
+
+- (void)helperTestConditionCountReactivationAdd
+{
+  [_watcher addCondition:self.helperTestConditionName
+                    type:SRCWConditionTypeCountReactivation
+                 options:nil block:^{}];
+}
+
+- (void)helperTestConditionCountOpenAdd
+{
+  [_watcher addCondition:self.helperTestConditionName
+                    type:SRCWConditionTypeCountOpen
+                 options:nil block:^{}];
+}
+
 - (void)helperTestConditionTriggerAndEvaluate
 {
   [self helperTestConditionTrigger];
@@ -152,13 +173,105 @@ static NSString const * kFileName = @"SRConditionsWatcherState.plist";
   GHAssertTrue([[NSFileManager defaultManager] fileExistsAtPath:self.helperTestFilePath], @"State file not created after triggering a conditionCountTriggered condition");
 }
 
-- (void)testTriggerConditionShouldRaiseExceptionIfTriggeringNotTriggerableCondition
+- (void)testTriggerConditionShouldRaiseExceptionIfTriggeringVersionChangeCondition
 {
   [self helperTestConditionVersionChangeAdd];
 
   GHAssertThrows({
     [self helperTestConditionTrigger];
   }, @"should throw an exception if the condition is not triggerable");
+}
+
+- (void)testTriggerConditionShouldRaiseExceptionIfTriggeringCountLaunchCondition
+{
+  [self helperTestConditionCountLaunchAdd];
+  
+  GHAssertThrows({
+    [self helperTestConditionTrigger];
+  }, @"should throw an exception if the condition is not triggerable");
+}
+
+- (void)testTriggerConditionShouldRaiseExceptionIfTriggeringCountOpenCondition
+{
+  [self helperTestConditionCountOpenAdd];
+  
+  GHAssertThrows({
+    [self helperTestConditionTrigger];
+  }, @"should throw an exception if the condition is not triggerable");
+}
+
+- (void)testTriggerConditionShouldRaiseExceptionIfTriggeringCountReactivationCondition
+{
+  [self helperTestConditionCountReactivationAdd];
+  
+  GHAssertThrows({
+    [self helperTestConditionTrigger];
+  }, @"should throw an exception if the condition is not triggerable");
+}
+
+
+#pragma mark - #limitCondition
+
+- (void)testLimitConditionShouldPreventActivationOfConditionEvenIfVerified
+{
+  __block NSUInteger blockRunCount = 0;
+  [_watcher addCondition:self.helperTestConditionName
+                    type:SRCWConditionTypeCountTriggered
+                 options:@{SRCWConditionOptionCountModulo: @(1)}
+                   block:^{
+                     blockRunCount++;
+                   }];
+  
+  [_watcher limitCondition:self.helperTestConditionName];
+  [_watcher triggerCondition:self.helperTestConditionName];
+  [_watcher evaluateCondition:self.helperTestConditionName];
+  GHAssertTrue(blockRunCount == 0, @"#limitCondition should prevent verified condition from being activated when evaluated");
+}
+
+#pragma mark - #unlimitCondition
+
+- (void)testUnlimitConditionShouldRestoreActivationOfCondition
+{
+  __block NSUInteger blockRunCount = 0;
+  [_watcher addCondition:self.helperTestConditionName
+                    type:SRCWConditionTypeCountTriggered
+                 options:@{SRCWConditionOptionCountModulo: @(1)}
+                   block:^{
+                     blockRunCount++;
+                   }];
+  
+  [_watcher limitCondition:self.helperTestConditionName];
+  [_watcher triggerCondition:self.helperTestConditionName];
+  [_watcher evaluateCondition:self.helperTestConditionName];
+  GHAssertTrue(blockRunCount == 0, @"#limitCondition should prevent verified condition from being activated when evaluated");
+  
+  [_watcher unlimitCondition:self.helperTestConditionName];
+  [_watcher triggerCondition:self.helperTestConditionName];
+  [_watcher evaluateCondition:self.helperTestConditionName];
+  GHAssertTrue(blockRunCount == 1, @"#limitCondition should restore activation of previously limited condition");
+}
+
+
+#pragma mark - #triggerLaunch
+
+- (void)testTriggerLaunchShouldIncreaseGlobalConditionsLaunchCount
+{
+  [_watcher triggerLaunch];
+  NSDictionary* state = [NSDictionary dictionaryWithContentsOfFile:self.helperTestFilePath];
+  NSUInteger launchCount = ((NSNumber*)[[state valueForKey:@"__GlobalConditions"] valueForKey:@"launchCount"]).unsignedIntValue;
+
+  GHAssertTrue(launchCount == 1, @"should have incremented the global launch count");
+}
+
+#pragma mark - #triggerReactivation
+
+- (void)testTriggerReactivationShouldIncreaseTheReactivationCount
+{
+  [_watcher triggerReactivation];
+  NSDictionary* state = [NSDictionary dictionaryWithContentsOfFile:self.helperTestFilePath];
+  NSUInteger reactivationCount = ((NSNumber*)[[state valueForKey:@"__GlobalConditions"] valueForKey:@"reactivationCount"]).unsignedIntValue;
+
+  GHAssertTrue(reactivationCount == 1, @"should have incremented the global reactivation count");
 }
 
 
@@ -223,7 +336,7 @@ static NSString const * kFileName = @"SRConditionsWatcherState.plist";
   [[[mockEnvironmentHelper stub] andReturn:@"1.2.3"] currentVersion];
   
   [self helperTestConditionEvaluate];
-  GHAssertTrue(blockRunCount == 0, @"Version change condition should not activate the first time it is evaluated (with no value in state)");
+  GHAssertTrue(blockRunCount == 0, @"Version change condition should not activate the first time it is evaluated");
 }
 
 - (void)testEvaluateConditionVersionChangeShouldActivateIfVersionIsDifferentFromState
@@ -238,6 +351,7 @@ static NSString const * kFileName = @"SRConditionsWatcherState.plist";
   _watcher.environmentHelper = mockEnvironmentHelper;
   [[[mockEnvironmentHelper expect] andReturn:@"1.2.3"] currentVersion];
   [self helperTestConditionEvaluate];
+  // Evaluating a first time to set the version
   
   [[[mockEnvironmentHelper expect] andReturn:@"1.2.4"] currentVersion];
   [self helperTestConditionEvaluate];
@@ -255,12 +369,130 @@ static NSString const * kFileName = @"SRConditionsWatcherState.plist";
   
   id mockEnvironmentHelper = self.mockEnvironmentHelper;
   _watcher.environmentHelper = mockEnvironmentHelper;
-  [[[mockEnvironmentHelper stub] andReturn:@"1.2.3"] currentVersion];
+  [[[mockEnvironmentHelper expect] andReturn:@"1.2.3"] currentVersion];
   [self helperTestConditionEvaluate];
   
-  [[[mockEnvironmentHelper expect] andReturn:@"1.2.4"] currentVersion];
+  [[[mockEnvironmentHelper expect] andReturn:@"1.2.3"] currentVersion];
   [self helperTestConditionEvaluate];
   GHAssertTrue(blockRunCount == 0, @"Version change condition should not activate if same as the saved one");
+}
+
+- (void)testEvaluationConditionVersionChangeShouldActivateMultipleConditions
+{
+  __block NSUInteger blockRunCount = 0;
+  NSString* condition1Name = [self.helperTestConditionName stringByAppendingFormat:@"_1"];
+  NSString* condition2Name = [self.helperTestConditionName stringByAppendingFormat:@"_2"];
+
+  [_watcher addCondition: condition1Name
+                    type: SRCWConditionTypeVersionChange
+                 options: nil
+                   block: ^{blockRunCount++;}];
+  
+  [_watcher addCondition: condition2Name
+                    type: SRCWConditionTypeVersionChange
+                 options: nil
+                   block: ^{blockRunCount++;}];
+
+  id mockEnvironmentHelper = self.mockEnvironmentHelper;
+  _watcher.environmentHelper = mockEnvironmentHelper;
+
+  [[[mockEnvironmentHelper expect] andReturn:@"1.2.3"] currentVersion];
+  [_watcher evaluateCondition:condition1Name];
+  
+  [[[mockEnvironmentHelper expect] andReturn:@"1.2.3"] currentVersion];
+  [_watcher evaluateCondition:condition2Name];
+  // Evaluating a first time to set the saved version
+
+  [[[mockEnvironmentHelper expect] andReturn:@"1.2.4"] currentVersion];
+  [_watcher evaluateCondition:condition1Name];
+  
+  [[[mockEnvironmentHelper expect] andReturn:@"1.2.4"] currentVersion];
+  [_watcher evaluateCondition:condition2Name];
+
+  GHAssertTrue(blockRunCount == 2, @"Version change condition should have been activated for each version change condition");
+}
+
+- (void)testEvaluateConditionCountLaunch
+{
+  __block NSUInteger blockRunCount = 0;
+  [_watcher addCondition:self.helperTestConditionName
+                    type:SRCWConditionTypeCountLaunch
+                 options:@{SRCWConditionOptionCountExact: @(5)}
+                   block:^{
+                     blockRunCount++;
+                   }];
+  
+  for (int i = 0; i < 4; i++) {
+    [_watcher triggerLaunch];
+    [self helperTestConditionEvaluate];
+  }
+  GHAssertTrue(blockRunCount == 0, @"Condition should not have been activated before 5 launches");
+  
+  [_watcher triggerLaunch];
+  [self helperTestConditionEvaluate];
+  GHAssertTrue(blockRunCount == 1, @"Condition should have been activated once after 5th launch");
+  
+  for (int i = 0; i < 20; i++) {
+    [_watcher triggerLaunch];
+    [self helperTestConditionEvaluate];
+  }
+  GHAssertTrue(blockRunCount == 1, @"Condition should not be activated after 6th launch");
+}
+
+- (void)testEvaluateConditionCountReactivation
+{
+  __block NSUInteger blockRunCount = 0;
+  [_watcher addCondition:self.helperTestConditionName
+                    type:SRCWConditionTypeCountReactivation
+                 options:@{SRCWConditionOptionCountExact: @(5)}
+                   block:^{
+                     blockRunCount++;
+                   }];
+  
+  for (int i = 0; i < 4; i++) {
+    [_watcher triggerReactivation];
+    [self helperTestConditionEvaluate];
+  }
+  GHAssertTrue(blockRunCount == 0, @"Condition should not have been activated before 5 reactivations");
+  
+  [_watcher triggerReactivation];
+  [self helperTestConditionEvaluate];
+  GHAssertTrue(blockRunCount == 1, @"Condition should have been activated once after 5th reactivation");
+  
+  for (int i = 0; i < 20; i++) {
+    [_watcher triggerReactivation];
+    [self helperTestConditionEvaluate];
+  }
+  GHAssertTrue(blockRunCount == 1, @"Condition should not be activated after 6th reactivations");
+}
+
+- (void)testEvaluationConditionCountOpen
+{
+  __block NSUInteger blockRunCount = 0;
+  [_watcher addCondition:self.helperTestConditionName
+                    type:SRCWConditionTypeCountOpen
+                 options:@{SRCWConditionOptionCountExact: @(5)}
+                   block:^{
+                     blockRunCount++;
+                   }];
+  
+  for (int i = 0; i < 2; i++) {
+    [_watcher triggerLaunch];
+    [_watcher triggerReactivation];
+    [self helperTestConditionEvaluate];
+  }
+  GHAssertTrue(blockRunCount == 0, @"Condition should not have been activated after 2 launches and 2 reactivations");
+  
+  [_watcher triggerReactivation];
+  [self helperTestConditionEvaluate];
+  GHAssertTrue(blockRunCount == 1, @"Condition should have been activated once after 2 launches and 3 reactivations");
+  
+  for (int i = 0; i < 5; i++) {
+    [_watcher triggerLaunch];
+    [_watcher triggerReactivation];
+    [self helperTestConditionEvaluate];
+  }
+  GHAssertTrue(blockRunCount == 1, @"Condition should not be activated after more launches/reactivations");
 }
 
 - (void)testEvaluateConditionWithLimitOnMaxActivationCountShouldNotActivateIfVerifiedButLimitReached
