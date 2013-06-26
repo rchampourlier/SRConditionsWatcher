@@ -14,10 +14,12 @@
 
 NSString const * SRCWConditionOptionCountExact                  = @"countExact";
 NSString const * SRCWConditionOptionCountModulo                 = @"countModulo";
-NSString const * SRCWConditionOptionLimitingActivationCount     = @"maxActivationCount";
+NSString const * SRCWConditionOptionLastTimeMoreThanAgo         = @"lastTimeMoreThanAgo";
+NSString const * SRCWConditionOptionLimitingActivationCount     = @"limitingActivationCount";
 
 static NSString const * kFileName                               = @"SRConditionsWatcherState.plist";
-static NSString const * kStateDictionaryCounter                 = @"counter";
+static NSString const * kStateDictionaryTriggerCount            = @"triggerCount";
+static NSString const * kStateDictionaryTriggerLastTime         = @"triggerLastTime";
 static NSString const * kStateDictionaryActivationCount         = @"activationCount";
 static NSString const * kStateDictionaryVersion                 = @"version";
 static NSString const * kStateDictionaryManualLimit             = @"manualLimit";
@@ -54,6 +56,9 @@ static NSString const * kConditionDictionaryType                = @"type";
 
 - (BOOL)evaluateConditionOfTypeCountOpenWithState:(NSMutableDictionary *)conditionState
                                           options:(NSDictionary *)conditionOptions;
+
+- (BOOL)evaluateConditionOfTypeLastTimeTriggeredWithState:(NSMutableDictionary *)conditionState
+                                                  options:(NSDictionary *)conditionOptions;
 
 #pragma mark - Handling limiting options
 - (BOOL)evaluateLimitingOptionsInConditionState:(NSMutableDictionary *)conditionState
@@ -100,7 +105,7 @@ static NSString const * kConditionDictionaryType                = @"type";
 - (void)addCondition:(NSString *)conditionName
                 type:(SRCWConditionType)conditionType
              options:(NSDictionary *)conditionOptions
-               block:(void (^)(void))conditionBlock
+               block:(void (^)(NSDictionary* conditionState, NSDictionary* globalState))conditionBlock
 {
   if (conditionBlock == nil) {
     NSException* myException = [NSException exceptionWithName:@"InvalidConditionException"
@@ -131,14 +136,19 @@ static NSString const * kConditionDictionaryType                = @"type";
 // to the condition when it was defined. This is only valable for this call,
 // other calls to #evaluate without a specific block will run the original block.
 - (BOOL)evaluateCondition:(NSString *)conditionName
-                    block:(void (^)(void))evaluationBlock
+                    block:(void (^)(NSDictionary* conditionState, NSDictionary* globalState))evaluationBlock
 {
   NSDictionary*         condition         = [self condition:conditionName];
   NSMutableDictionary*  conditionState    = [self conditionState:conditionName];
+  NSMutableDictionary*  globalState       = [self globalConditionsState];
   
   SRCWConditionType     conditionType     = ((NSNumber *)[condition objectForKey:kConditionDictionaryType]).unsignedIntValue;
   NSDictionary *        conditionOptions  = [condition objectForKey:kConditionDictionaryOptions];
-  void (^conditionBlock)(void)            = evaluationBlock ? evaluationBlock : (void (^)(void))[condition objectForKey:kConditionDictionaryBlock];
+
+  void (^conditionBlock)(NSDictionary* conditionState, NSDictionary* globalState) =
+    evaluationBlock ?
+    evaluationBlock :
+    (void (^)(NSDictionary* conditionState, NSDictionary* globalState))[condition objectForKey:kConditionDictionaryBlock];
   
   BOOL result;
   
@@ -175,6 +185,12 @@ static NSString const * kConditionDictionaryType                = @"type";
                                                          options:conditionOptions];
         break;
       }
+        
+      case SRCWConditionTypeLastTimeTriggered: {
+        result = [self evaluateConditionOfTypeLastTimeTriggeredWithState:conditionState
+                                                                 options:conditionOptions];
+        break;
+      }
     }
   }
   else result = NO;
@@ -184,7 +200,7 @@ static NSString const * kConditionDictionaryType                = @"type";
     NSNumber* activationCountNumber = [conditionState objectForKey:kStateDictionaryActivationCount];
     NSUInteger activationCount = activationCountNumber ? activationCountNumber.unsignedIntValue : 0;
     [conditionState setObject:@(activationCount+1) forKey:kStateDictionaryActivationCount];
-    conditionBlock();
+    conditionBlock([NSDictionary dictionaryWithDictionary:conditionState], [NSDictionary dictionaryWithDictionary:globalState]);
   }
   
   [self updateCondition:conditionName state:conditionState];
@@ -204,14 +220,20 @@ static NSString const * kConditionDictionaryType                = @"type";
   switch (conditionType) {
       
     case SRCWConditionTypeCountTriggered: {
-      NSNumber*   counterNumber = [conditionState objectForKey:kStateDictionaryCounter];
+      NSNumber*   counterNumber = [conditionState objectForKey:kStateDictionaryTriggerCount];
       NSUInteger  counter = (counterNumber ? counterNumber.unsignedIntValue : 0) + 1;
-      [conditionState setObject:@(counter) forKey:kStateDictionaryCounter];
+      [conditionState setObject:@(counter) forKey:kStateDictionaryTriggerCount];
+      break;
+    }
+      
+    case SRCWConditionTypeLastTimeTriggered: {
+      NSDate* now = [self.environmentHelper now];
+      [conditionState setObject:now forKey:kStateDictionaryTriggerLastTime];
       break;
     }
       
     default:
-      NSAssert(false, @"Only CountTriggered conditions can be triggered");
+      NSAssert(false, @"This condition can't be triggered");
   }
   
   return [self updateCondition:conditionName state:conditionState];
@@ -276,7 +298,7 @@ static NSString const * kConditionDictionaryType                = @"type";
 - (BOOL)evaluateConditionOfTypeCountTriggeredWithState:(NSMutableDictionary *)conditionState
                                                options:(NSDictionary *)conditionOptions
 {
-  NSNumber *countNumber = [conditionState objectForKey:kStateDictionaryCounter];
+  NSNumber *countNumber = [conditionState objectForKey:kStateDictionaryTriggerCount];
   NSUInteger count = countNumber ? countNumber.unsignedIntValue : 0;
   
   for (NSString *optionName in conditionOptions.allKeys)
@@ -384,6 +406,27 @@ static NSString const * kConditionDictionaryType                = @"type";
       
       NSUInteger moduloValue = moduloValueNumber.unsignedIntValue;
       if (count % moduloValue == 0) return YES;
+    }
+  }
+  return NO;
+}
+
+- (BOOL)evaluateConditionOfTypeLastTimeTriggeredWithState:(NSMutableDictionary *)conditionState
+                                                  options:(NSDictionary *)conditionOptions
+{
+  NSDate* triggerLastTime = [conditionState objectForKey:kStateDictionaryTriggerLastTime];
+  NSDate* now = [self.environmentHelper now];
+  NSTimeInterval lastTimeAgoTimeInterval = [now timeIntervalSinceDate:triggerLastTime];
+  
+  for (NSString *optionName in conditionOptions.allKeys)
+  {
+    if (optionName == SRCWConditionOptionLastTimeMoreThanAgo)
+    {
+      NSNumber* minimumIntervalNumber = [conditionOptions objectForKey:optionName];
+      NSAssert([minimumIntervalNumber isKindOfClass:[NSNumber class]], @"MoreThanAgo option value must be NSNumber");
+      
+      NSTimeInterval minimumInterval = minimumIntervalNumber.doubleValue;
+      if (lastTimeAgoTimeInterval > minimumInterval) return YES;
     }
   }
   return NO;

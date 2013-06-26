@@ -102,14 +102,16 @@
 
 typedef enum {
   SRCWConditionTypeVersionChange      = 1 << 0, // condition is triggered on version change
-  SRCWConditionTypeCountTriggered     = 1 << 1, // condition is triggered on manual trigger count
+  SRCWConditionTypeCountTriggered     = 1 << 1, // condition is manually triggered
   SRCWConditionTypeCountLaunch        = 1 << 2,
   SRCWConditionTypeCountReactivation  = 1 << 3,
-  SRCWConditionTypeCountOpen          = 1 << 4
+  SRCWConditionTypeCountOpen          = 1 << 4,
+  SRCWConditionTypeLastTimeTriggered  = 1 << 5, // condition is manually triggered
 } SRCWConditionType;
 
 extern NSString const * SRCWConditionOptionCountExact;
 extern NSString const * SRCWConditionOptionCountModulo;
+extern NSString const * SRCWConditionOptionLastTimeMoreThanAgo;
 extern NSString const * SRCWConditionOptionLimitingActivationCount;
 
 
@@ -125,7 +127,7 @@ extern NSString const * SRCWConditionOptionLimitingActivationCount;
 - (void)addCondition:(NSString *)conditionName
                 type:(SRCWConditionType)conditionType
              options:(NSDictionary *)conditionOptions
-               block:(void (^)(void))conditionBlock;
+               block:(void (^)(NSDictionary* conditionState, NSDictionary* globalState))conditionBlock;
 
 // Evaluates the specified condition. If the condition is verified, the associated
 // block is run.
@@ -134,7 +136,7 @@ extern NSString const * SRCWConditionOptionLimitingActivationCount;
 // Like #evaluate: but evaluationBlock is run instead of the block associated
 // to the condition when it was defined. This is only valable for this call,
 // other calls to #evaluate without a specific block will run the original block.
-- (BOOL)evaluateCondition:(NSString *)conditionName block:(void (^)(void))evaluationBlock;
+- (BOOL)evaluateCondition:(NSString *)conditionName block:(void (^)(NSDictionary* conditionState, NSDictionary* globalState))evaluationBlock;
 
 // Notifies the watcher that the triggering event for the specified
 // (trigger) condition occurred.
