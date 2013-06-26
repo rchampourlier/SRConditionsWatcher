@@ -8,9 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SREnvironmentHelper : NSObject
+@interface SRCWEnvironmentHelper : NSObject
 
-- (NSString *)currentVersion;
-- (NSURL *)documentDirectoryURL;
+- (NSString*)currentVersion;
+- (NSURL*)documentDirectoryURL;
+- (NSDate*)now;
 
 @end

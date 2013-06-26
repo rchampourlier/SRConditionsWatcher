@@ -7,7 +7,7 @@
 //
 
 #import "SRConditionsWatcher.h"
-#import "SREnvironmentHelper.h"
+#import "SRCWEnvironmentHelper.h"
 
 #import <GHUnitIOS/GHUnit.h>
 #import <OCMock/OCMock.h>
@@ -96,7 +96,7 @@ static NSString const * kFileName = @"SRConditionsWatcherState.plist";
 
 - (id)mockEnvironmentHelper
 {
-  SREnvironmentHelper *original = [[SREnvironmentHelper alloc] init];
+  SRCWEnvironmentHelper *original = [[SRCWEnvironmentHelper alloc] init];
   id mock = [OCMockObject partialMockForObject:original];
   [[[mock stub] andForwardToRealObject] documentDirectoryURL];
   return mock;

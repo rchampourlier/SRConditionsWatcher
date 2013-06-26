@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7AB1B787177AE97100EB8AE9 /* SRCWEnvironmentHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE122FB1770C725003B48BD /* SRCWEnvironmentHelper.m */; };
 		7AE122BE177067D2003B48BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE122BD177067D2003B48BD /* Foundation.framework */; };
 		7AE122C3177067D2003B48BD /* SRConditionsWatcher.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7AE122C2177067D2003B48BD /* SRConditionsWatcher.h */; };
 		7AE122C5177067D2003B48BD /* SRConditionsWatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE122C4177067D2003B48BD /* SRConditionsWatcher.m */; };
@@ -22,7 +23,7 @@
 		7AE123261770D16A003B48BD /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE1231E1770D16A003B48BD /* libOCMock.a */; };
 		7AE123291770D1A3003B48BD /* SRConditionsWatcherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE123281770D1A3003B48BD /* SRConditionsWatcherTests.m */; };
 		7AE1232A1770D2DE003B48BD /* SRConditionsWatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE122C4177067D2003B48BD /* SRConditionsWatcher.m */; };
-		7AE1232B1770D2DE003B48BD /* SREnvironmentHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE122FB1770C725003B48BD /* SREnvironmentHelper.m */; };
+		7AE1232B1770D2DE003B48BD /* SRCWEnvironmentHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE122FB1770C725003B48BD /* SRCWEnvironmentHelper.m */; };
 		7AE1232D1770E164003B48BD /* SRConditionsWatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AE122C2177067D2003B48BD /* SRConditionsWatcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -47,8 +48,8 @@
 		7AE122C4177067D2003B48BD /* SRConditionsWatcher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SRConditionsWatcher.m; sourceTree = "<group>"; };
 		7AE122CC177067D3003B48BD /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		7AE122CE177067D3003B48BD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		7AE122FA1770C725003B48BD /* SREnvironmentHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SREnvironmentHelper.h; sourceTree = "<group>"; };
-		7AE122FB1770C725003B48BD /* SREnvironmentHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SREnvironmentHelper.m; sourceTree = "<group>"; };
+		7AE122FA1770C725003B48BD /* SRCWEnvironmentHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRCWEnvironmentHelper.h; sourceTree = "<group>"; };
+		7AE122FB1770C725003B48BD /* SRCWEnvironmentHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRCWEnvironmentHelper.m; sourceTree = "<group>"; };
 		7AE123011770D035003B48BD /* SRConditionsWatcherGHUnitTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SRConditionsWatcherGHUnitTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AE123041770D035003B48BD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		7AE123081770D035003B48BD /* SRConditionsWatcherGHUnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SRConditionsWatcherGHUnitTests-Info.plist"; sourceTree = "<group>"; };
@@ -129,8 +130,8 @@
 			children = (
 				7AE122C2177067D2003B48BD /* SRConditionsWatcher.h */,
 				7AE122C4177067D2003B48BD /* SRConditionsWatcher.m */,
-				7AE122FA1770C725003B48BD /* SREnvironmentHelper.h */,
-				7AE122FB1770C725003B48BD /* SREnvironmentHelper.m */,
+				7AE122FA1770C725003B48BD /* SRCWEnvironmentHelper.h */,
+				7AE122FB1770C725003B48BD /* SRCWEnvironmentHelper.m */,
 				7AE122C0177067D2003B48BD /* Supporting Files */,
 			);
 			path = SRConditionsWatcher;
@@ -303,6 +304,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7AE122C5177067D2003B48BD /* SRConditionsWatcher.m in Sources */,
+				7AB1B787177AE97100EB8AE9 /* SRCWEnvironmentHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,7 +315,7 @@
 				7AE1230D1770D035003B48BD /* main.m in Sources */,
 				7AE123291770D1A3003B48BD /* SRConditionsWatcherTests.m in Sources */,
 				7AE1232A1770D2DE003B48BD /* SRConditionsWatcher.m in Sources */,
-				7AE1232B1770D2DE003B48BD /* SREnvironmentHelper.m in Sources */,
+				7AE1232B1770D2DE003B48BD /* SRCWEnvironmentHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

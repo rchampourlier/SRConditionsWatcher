@@ -9,7 +9,7 @@
 #import "SRConditionsWatcher.h"
 
 // Libraries
-#import "SREnvironmentHelper.h"
+#import "SRCWEnvironmentHelper.h"
 
 
 NSString const * SRCWConditionOptionCountExact                  = @"countExact";
@@ -85,7 +85,7 @@ static NSString const * kConditionDictionaryType                = @"type";
 {
   self = [super init];
   if (self) {
-    self.environmentHelper = [[SREnvironmentHelper alloc] init];
+    self.environmentHelper = [[SRCWEnvironmentHelper alloc] init];
     _conditions = [NSMutableDictionary dictionary];
     [self readState];
   }

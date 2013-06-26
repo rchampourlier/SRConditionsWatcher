@@ -13,9 +13,9 @@
 //  The SREnvironmentHelper is nice as a dependency-injection
 //  to ease Unit Testing.
 
-#import "SREnvironmentHelper.h"
+#import "SRCWEnvironmentHelper.h"
 
-@implementation SREnvironmentHelper
+@implementation SRCWEnvironmentHelper
 
 - (NSString *)currentVersion
 {
@@ -27,6 +27,11 @@
   NSArray *URLs = [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask];
   NSURL *documentDirectoryURL = URLs.count > 0 ? URLs[0] : nil;
   return documentDirectoryURL;
+}
+
+- (NSDate*)now
+{
+  return [NSDate date];
 }
 
 @end
