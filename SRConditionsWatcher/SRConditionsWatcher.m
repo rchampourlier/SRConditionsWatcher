@@ -415,21 +415,25 @@ static NSString const * kConditionDictionaryType                = @"type";
                                                   options:(NSDictionary *)conditionOptions
 {
   NSDate* triggerLastTime = [conditionState objectForKey:kStateDictionaryTriggerLastTime];
-  NSDate* now = [self.environmentHelper now];
-  NSTimeInterval lastTimeAgoTimeInterval = [now timeIntervalSinceDate:triggerLastTime];
   
-  for (NSString *optionName in conditionOptions.allKeys)
-  {
-    if (optionName == SRCWConditionOptionLastTimeMoreThanAgo)
+  if (triggerLastTime == nil) return YES;
+  else {
+    NSDate* now = [self.environmentHelper now];
+    NSTimeInterval lastTimeAgoTimeInterval = [now timeIntervalSinceDate:triggerLastTime];
+    
+    for (NSString *optionName in conditionOptions.allKeys)
     {
-      NSNumber* minimumIntervalNumber = [conditionOptions objectForKey:optionName];
-      NSAssert([minimumIntervalNumber isKindOfClass:[NSNumber class]], @"MoreThanAgo option value must be NSNumber");
-      
-      NSTimeInterval minimumInterval = minimumIntervalNumber.doubleValue;
-      if (lastTimeAgoTimeInterval > minimumInterval) return YES;
+      if (optionName == SRCWConditionOptionLastTimeMoreThanAgo)
+      {
+        NSNumber* minimumIntervalNumber = [conditionOptions objectForKey:optionName];
+        NSAssert([minimumIntervalNumber isKindOfClass:[NSNumber class]], @"MoreThanAgo option value must be NSNumber");
+        
+        NSTimeInterval minimumInterval = minimumIntervalNumber.doubleValue;
+        if (lastTimeAgoTimeInterval > minimumInterval) return YES;
+      }
     }
+    return NO;
   }
-  return NO;
 }
 
 

@@ -515,6 +515,20 @@ static NSString const * kFileName = @"SRConditionsWatcherState.plist";
 
 #pragma mark - #evaluationCondition - LastTimeTriggered
 
+- (void)testEvaluateConditionLastTimeTriggeredWithMoreThanAgoOptionShouldActivateIfNeverTriggered
+{
+  __block NSUInteger blockRunCount = 0;
+  [_watcher addCondition:self.helperTestConditionName
+                    type:SRCWConditionTypeLastTimeTriggered
+                 options:@{SRCWConditionOptionLastTimeMoreThanAgo: @(60)}
+                   block:^(NSDictionary* conditionState, NSDictionary* globalState) {
+                     blockRunCount++;
+                   }];
+      
+  [_watcher evaluateCondition:self.helperTestConditionName];
+  GHAssertTrue(blockRunCount == 1, @"Condition should have been activated on evaluation if it was never triggered");
+}
+
 - (void)testEvaluateConditionLastTimeTriggeredWithMoreThanAgoOptionShouldActivateIfLastTriggerIsMoreThanSpecifiedValueAgo
 {
   __block NSUInteger blockRunCount = 0;
