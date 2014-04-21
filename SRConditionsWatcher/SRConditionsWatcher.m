@@ -199,8 +199,15 @@ static NSString const * kConditionDictionaryType                = @"type";
     // Activating!
     NSNumber* activationCountNumber = [conditionState objectForKey:kStateDictionaryActivationCount];
     NSUInteger activationCount = activationCountNumber ? activationCountNumber.unsignedIntValue : 0;
-    [conditionState setObject:@(activationCount+1) forKey:kStateDictionaryActivationCount];
+    
     conditionBlock([NSDictionary dictionaryWithDictionary:conditionState], [NSDictionary dictionaryWithDictionary:globalState]);
+
+    // We reload the conditionState here, before changing it, because the conditionBlock
+    // may run a trigger and change the conditionState. If we don't reload it, the changes
+    // introduced by the evaluation will be lost.
+    [self readState];
+    conditionState = [self conditionState:conditionName];
+    [conditionState setObject:@(activationCount+1) forKey:kStateDictionaryActivationCount];
   }
   
   [self updateCondition:conditionName state:conditionState];

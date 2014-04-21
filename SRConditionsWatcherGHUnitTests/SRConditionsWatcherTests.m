@@ -706,4 +706,33 @@ static NSString const * kFileName = @"SRConditionsWatcherState.plist";
   [_watcher evaluateCondition:self.helperTestConditionName block:passedBlock];
 }
 
+/**
+ * Here we test that if an evaluation block performs a trigger on the condition,
+ * the condition state is correctly updated.
+ * There was a bug before because the condition was changed to increment the activation
+ * count during activation but the trigger's change wasn't in the current instance of the
+ * state. When the condition state was written, the trigger's change was removed.
+ */
+- (void)testConditionBlockWithTriggerShouldCorrectlyUpdateConditionState
+{
+  __block NSUInteger blockRunCount = 0;
+  
+  NSDictionary* options = @{SRCWConditionOptionCountExact: @(0)};
+  void (^conditionBlock)(NSDictionary* conditionState, NSDictionary* globalState) = ^(NSDictionary* conditionState, NSDictionary* globalState) {
+    blockRunCount += 1;
+    [_watcher triggerCondition:self.helperTestConditionName];
+  };
+  
+  [_watcher addCondition: self.helperTestConditionName
+                    type: SRCWConditionTypeCountTriggered
+                 options: options
+                   block: conditionBlock];
+
+  [_watcher evaluateCondition:self.helperTestConditionName];
+  [_watcher evaluateCondition:self.helperTestConditionName];
+  
+  GHAssertTrue(blockRunCount > 0, @"Block should have been called");
+  GHAssertTrue(blockRunCount == 1, @"Block should only have been called once");
+}
+
 @end
